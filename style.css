@@ -1,0 +1,112 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+ol, ul {
+  list-style: none;
+}
+
+a {
+  color: #bf3f41;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.framed > canvas, .framed > img, .framed > .icon {
+  background-color: #ffffff;
+  border: 1px solid #dddddd;
+  padding: 1px;
+}
+img {
+  vertical-align: middle;
+}
+
+small {
+  font-size: .85rem;
+}
+
+.box48 > :first-child {
+  float: left;
+}
+.box24 > :first-child {
+  float: left;
+}
+
+.badge {
+  background-color: #666666;
+  border-radius: 9px;
+  color: #ffffff;
+  display: inline-block;
+  font-size: .85rem;
+  font-weight: bold;
+  padding: 1px 6px 1px;
+  position: relative;
+  text-shadow: none !important;
+  vertical-align: middle;
+  white-space: nowrap;
+  word-wrap: normal;
+}
+
+.calendarWeekView > .containerList > li > .calendarEvents > li {
+  background-color: #f9f9f9;
+  padding: 7px;
+  -webkit-transition-property: background-color;
+  transition-property: background-color;
+  -webkit-transition-duration: .1s;
+  transition-duration: .1s;
+  -webkit-transition-timing-function: linear;
+  transition-timing-function: linear;
+  list-style: none;
+}
+
+.calendarWeekView > .containerList > li > .calendarDay > h3 {
+  font-size: 4.0rem;
+  line-height: 100%;
+}
+
+.calendarWeekView > .containerList > li > .calendarDay {
+  background-color: #ffffff;
+  border: 1px solid #dddddd;
+  border-radius: 6px;
+  float: left;
+  padding: 4px 0;
+  text-align: center;
+  width: 90px;
+}
+.calendarWeekView > .containerList > li > .calendarEvents > li:not(:last-child) {
+  border-bottom: 1px solid #dddddd;
+}
+
+.calendarWeekView > .containerList > li > .calendarDay > p {
+  color: #bbbbbb;
+}
+
+.calendarWeekView > .containerList > li > .calendarDay > h3 {
+  font-size: 4.0rem;
+  line-height: 100%;
+}
+
+.calendarWeekView > .containerList > li > .calendarEvents {
+  margin: 4px 0 0 103px;
+}
+.calendarWeekView > .containerList > li > .calendarDay > h3 > a {
+  text-decoration: none;
+}
+
+.calendarWeekView > .containerList > li > .calendarEvents > li:not(:last-child) {
+  border-bottom: 1px solid #dddddd;
+}
+
+.calendarWeekView > .containerList > li > .calendarDay > p {
+  color: #bbbbbb;
+}
+
+li > .calendarDay {
+  background-color: #ffffff;
+  border: 1px solid #dddddd;
+  border-radius: 6px;
+  float: left;
+  padding: 4px 0;
+  text-align: center;
+  width: 90px;
+}
