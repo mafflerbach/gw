@@ -1,96 +1,197 @@
 <?php
+require_once('global.php');
+print(attacheNode(getGallery(), array('id'=>"gallery"))); die;
+?>
+<!DOCTYPE HTML>
+<!--
+	Prologue by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Prologue by HTML5 UP</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<!--[if lte IE 8]>
+    <script src="css/ie/html5shiv.js"></script><![endif]-->
+		<script src="js/jquery.min.js"></script>
+		<script src="js/jquery.scrolly.min.js"></script>
+		<script src="js/jquery.scrollzer.min.js"></script>
+		<script src="js/skel.min.js"></script>
+		<script src="js/skel-layers.min.js"></script>
+		<script src="js/init.js"></script>
+		<noscript>
+			<link rel="stylesheet" href="css/skel.css" />
+			<link rel="stylesheet" href="css/style.css" />
+			<link rel="stylesheet" href="css/style-wide.css" />
+		</noscript>
+		<!--[if lte IE 9]>
+    <link rel="stylesheet" href="css/ie/v9.css" /><![endif]-->
+		<!--[if lte IE 8]>
+    <link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+	</head>
+	<body>
 
+		<!-- Header -->
+			<div id="header" class="skel-layers-fixed">
 
-function getBoardlistPices($xpathStr) {
-  $file = cache('boardlist', 'http://forum.gw2community.de/BoardList/');
+				<div class="top">
 
-  $dom = new DOMDocument();
-  @$dom->loadHTML($file);
+					<!-- Logo -->
+						<div id="logo">
+							<span class="image avatar48"><img src="images/avatar.jpg" alt="" /></span>
+							<h1 id="title">Jane Doe</h1>
+							<p>Hyperspace Engineer</p>
+						</div>
 
-  $xpath = new DOMXPath($dom);
-  $list = $xpath->query($xpathStr);
+					<!-- Nav -->
+						<nav id="nav">
+							<!--
+							
+								Prologue's nav expects links in one of two formats:
+								
+								1. Hash link (scrolls to a different section within the page)
+								
+								   <li><a href="#foobar" id="foobar-link" class="icon fa-whatever-icon-you-want skel-layers-ignoreHref"><span class="label">Foobar</span></a></li>
 
-  return $list->item(0);
-}
+								2. Standard link (sends the user to another page/site)
 
-function cache($filename, $url) {
-  if (file_exists('cache/'.$filename)) {
-    $file = file_get_contents('cache/'.$filename);
-  } else {
-    $file = file_get_contents($url);
-    file_put_contents('cache/'.$filename, $file);
-  }
+								   <li><a href="http://foobar.tld" id="foobar-link" class="icon fa-whatever-icon-you-want"><span class="label">Foobar</span></a></li>
+							
+							-->
+							<ul>
+								<li><a href="#top" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-home">Intro</span></a></li>
+								<li><a href="#portfolio" id="portfolio-link" class="skel-layers-ignoreHref"><span class="icon fa-th">Portfolio</span></a></li>
+								<li><a href="#about" id="about-link" class="skel-layers-ignoreHref"><span class="icon fa-user">About Me</span></a></li>
+							</ul>
+						</nav>
+						
+				</div>
+				
+				<div class="bottom">
 
-  return $file;
-}
+					<!-- Social Icons -->
+						<ul class="icons">
+							<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+							<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+							<li><a href="#" class="icon fa-github"><span class="label">Github</span></a></li>
+							<li><a href="#" class="icon fa-dribbble"><span class="label">Dribbble</span></a></li>
+							<li><a href="#" class="icon fa-envelope"><span class="label">Email</span></a></li>
+						</ul>
+				
+				</div>
+			
+			</div>
 
+		<!-- Main -->
+			<div id="main">
 
+				<!-- Intro -->
+					<section id="top" class="one dark cover">
+						<div class="container">
 
-function getCalender($mode) {
-  switch ($mode) {
-    case 'week':
-      $url = "http://forum.gw2community.de/calendar/weekly";
-      $xpathStr = "//ol[@class='containerList']";
-      break;
-    case 'day':
-      $url = "http://forum.gw2community.de/calendar/Daily/";
-      $xpathStr = "//ol[@class='containerList']";
-      break;
-    default:
-      break;
-  }
+							<header>
+								<h2 class="alt">Hi! I'm <strong>Prologue</strong>, a <a href="http://html5up.net/license">free</a> responsive<br />
+								site template designed by <a href="http://html5up.net">HTML5 UP</a>.</h2>
+								<p>Ligula scelerisque justo sem accumsan diam quis<br />
+								vitae natoque dictum sollicitudin elementum.</p>
+							</header>
+							
+							<footer>
+								<a href="#portfolio" class="button scrolly">Magna Aliquam</a>
+							</footer>
 
-  $file = cache($mode, $url);
+						</div>
+					</section>
+					
+				<!-- Portfolio -->
+					<section id="portfolio" class="two">
+						<div class="container">
+					
+							<header>
+								<h2>Portfolio</h2>
+							</header>
+							
+							<p>Vitae natoque dictum etiam semper magnis enim feugiat convallis convallis
+							egestas rhoncus ridiculus in quis risus amet curabitur tempor orci penatibus.
+							Tellus erat mauris ipsum fermentum etiam vivamus eget. Nunc nibh morbi quis 
+							fusce hendrerit lacus ridiculus.</p>
+						
+							<div class="row">
+								<div class="4u">
+									<article class="item">
+										<a href="#" class="image fit"><img src="images/pic02.jpg" alt="" /></a>
+										<header>
+											<h3>Ipsum Feugiat</h3>
+										</header>
+									</article>
+									<article class="item">
+										<a href="#" class="image fit"><img src="images/pic03.jpg" alt="" /></a>
+										<header>
+											<h3>Rhoncus Semper</h3>
+										</header>
+									</article>
+								</div>
+								<div class="4u">
+									<article class="item">
+										<a href="#" class="image fit"><img src="images/pic04.jpg" alt="" /></a>
+										<header>
+											<h3>Magna Nullam</h3>
+										</header>
+									</article>
+									<article class="item">
+										<a href="#" class="image fit"><img src="images/pic05.jpg" alt="" /></a>
+										<header>
+											<h3>Natoque Vitae</h3>
+										</header>
+									</article>
+								</div>
+								<div class="4u">
+									<article class="item">
+										<a href="#" class="image fit"><img src="images/pic06.jpg" alt="" /></a>
+										<header>
+											<h3>Dolor Penatibus</h3>
+										</header>
+									</article>
+									<article class="item">
+										<a href="#" class="image fit"><img src="images/pic07.jpg" alt="" /></a>
+										<header>
+											<h3>Orci Convallis</h3>
+										</header>
+									</article>
+								</div>
+							</div>
 
-  $dom = new DOMDocument();
-  @$dom->loadHTML($file);
+						</div>
+					</section>
 
-  $xpath = new DOMXPath($dom);
-  $list = $xpath->query($xpathStr);
+				<!-- About Me -->
+					<section id="about" class="three">
+						<div class="container">
 
-  return $list->item(0);
+							<header>
+								<h2>About Us</h2>
+							</header>
 
-}
+							<a href="#" class="image featured"><img src="images/pic08.jpg" alt="" /></a>
+              <?php
+              print(attacheNode($about, array('id'=>"about")));
+              ?>
+						</div>
+					</section>
+			</div>
 
-function attacheNode($node, array $attr = array()) {
-  $newdoc = new DOMDocument();
-  $elem = '<div';
+		<!-- Footer -->
+			<div id="footer">
+				
+				<!-- Copyright -->
+					<ul class="copyright">
+						<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+				
+			</div>
 
-  if (!empty($attr)) {
-    $attributes = '';
-    foreach($attr as $key => $val) {
-      $attributes .= $key.'="'.$val.'"';
-    }
-    $elem .= ' '.$attributes;
-  }
-  $elem .= '/>';
-  $newdoc->loadXML($elem);
-  $node = $newdoc->importNode($node, true);
-  $newdoc->documentElement->appendChild($node);
-  return $newdoc->saveHTML();
-}
-
-
-
-$week = getCalender('week');
-$day= getCalender('day');
-$lastPosts = getBoardlistPices("//aside/div/fieldset[1]");
-$lastActivations = getBoardlistPices("//aside/div/fieldset[2]");
-$mostRecents = getBoardlistPices("//aside/div/fieldset[3]");
-//$lastPosts = getBoardlistPices("//fieldset[@class=''dashboardBox and position()=0]");
-
-
-$html = '<html>';
-$html .= '<head>';
-$html .= '<link rel="stylesheet" type="text/css" href="style.css"/>';
-$html .= '</head>';
-//$html .= attacheNode($day, array('id'=>"day"));
-//$html .= attacheNode($week, array('id'=>"week"));
-//$html .= attacheNode($lastPosts, array('id'=>"lastPost"));
-//$html .= attacheNode($lastActivations, array('id'=>"lastActivs"));
-$html .= attacheNode($mostRecents, array('id'=>"mostRecents"));
-$html .= '<body>';
-$html .= '</body>';
-$html .= '</html>';
-
-print($html);
+	</body>
+</html>
