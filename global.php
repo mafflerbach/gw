@@ -2,19 +2,38 @@
 
 
 function getGallery() {
-  return load('gallery', 'http://forum.gw2community.de/gallery/UnreadImageList/', '//*[@id="content"]/div[3]/div/ul/li');
+  $gal = load('gallery', 'http://forum.gw2community.de/gallery/UnreadImageList/', '//*[@id="content"]/div[3]/div/ul/li');
+  $gal = attacheNode($gal);
+
+  $i = 1;
+  $port = '';
+  $port .= '<div class="4u">';
+  foreach ($gal->li as $list) {
+    $port .= '<article class="item">';
+    $port .= '<a href="' . $list->a['href'] . '" class="image fit"><img src="' . $list->a->img['src'] . '" alt="" /></a>';
+    $port .= '<header><h3>' . $list->div->p . '</h3></header>';
+    $port .= '</article>';
+
+    if ($i == 3 || $i == 6) {
+      $port .= '</div><div class="4u">';
+    }
+    $i++;
+  }
+  $port .= '</div>';
+  return $port;
+
 }
 
 function getBoardlistPices($xpathStr) {
-  return load('boardlist', 'http://forum.gw2community.de/BoardList/',$xpathStr);
+  return load('boardlist', 'http://forum.gw2community.de/BoardList/', $xpathStr);
 }
 
 function cache($filename, $url) {
-  if (file_exists('cache/'.$filename)) {
-    $file = file_get_contents('cache/'.$filename);
+  if (file_exists('cache/' . $filename)) {
+    $file = file_get_contents('cache/' . $filename);
   } else {
     $file = file_get_contents($url);
-    file_put_contents('cache/'.$filename, $file);
+    file_put_contents('cache/' . $filename, $file);
   }
   return $file;
 }
@@ -33,7 +52,9 @@ function load($name, $url, $xpathStr) {
 }
 
 function getAboutUs() {
-  return load('about', 'http://forum.gw2community.de/CustomPage/?id=6',"//*[@id='cpHtml']/div");
+  $about = load('about', 'http://forum.gw2community.de/CustomPage/?id=6', "//*[@id='cpHtml']/div");
+  $about = attacheNode($about);
+    return $about->div->asXML();
 }
 
 
@@ -51,7 +72,12 @@ function getCalender($mode) {
       break;
   }
 
-  return load($mode,$url,  $xpathStr);
+  $nodes = load($mode, $url, $xpathStr);
+
+  $nodes = attacheNode($nodes);
+
+  return '<ol>'.$nodes->ol->asXML().'</ol>';
+
 }
 
 function attacheNode(DOMNodeList $node, array $attr = array()) {
@@ -60,10 +86,10 @@ function attacheNode(DOMNodeList $node, array $attr = array()) {
 
   if (!empty($attr)) {
     $attributes = '';
-    foreach($attr as $key => $val) {
-      $attributes .= $key.'="'.$val.'"';
+    foreach ($attr as $key => $val) {
+      $attributes .= $key . '="' . $val . '"';
     }
-    $elem .= ' '.$attributes;
+    $elem .= ' ' . $attributes;
   }
   $elem .= '/>';
 
@@ -83,9 +109,7 @@ function attacheNode(DOMNodeList $node, array $attr = array()) {
     }
   }
 
-
   $xml = simplexml_load_string($newdoc->saveXML());
-  print_r($xml);
 
   return $xml;
 }
@@ -93,11 +117,11 @@ function attacheNode(DOMNodeList $node, array $attr = array()) {
 
 
 $week = getCalender('week');
-$day= getCalender('day');
+$day = getCalender('day');
 $lastPosts = getBoardlistPices("//aside/div/fieldset[1]");
 $lastActivations = getBoardlistPices("//aside/div/fieldset[2]");
 $mostRecents = getBoardlistPices("//aside/div/fieldset[3]");
-$about= getAboutUs("//aside/div/fieldset[3]");
+$about = getAboutUs("//aside/div/fieldset[3]");
 
 $html = '<html>';
 $html .= '<head>';
@@ -109,7 +133,7 @@ $html .= '</head>';
 //$html .= attacheNode($lastActivations, array('id'=>"lastActivs"));
 //$html .= attacheNode($mostRecents, array('id'=>"mostRecents"));
 //$html .= attacheNode($about, array('id'=>"about"));
-$html .= attacheNode(getGallery(), array('id'=>"gallery"));
+//  $html .= attacheNode(getGallery(), array('id'=>"gallery"));
 $html .= '<body>';
 $html .= '</body>';
 $html .= '</html>';
