@@ -1,5 +1,6 @@
 <?php
 require_once('global.php');
+
 ?>
 <!DOCTYPE HTML>
 <!--
@@ -25,12 +26,12 @@ require_once('global.php');
 			<link rel="stylesheet" href="css/skel.css" />
 			<link rel="stylesheet" href="css/style.css" />
 			<link rel="stylesheet" href="css/style-wide.css" />
-			<link rel="stylesheet" href="style.css" />
 		</noscript>
 		<!--[if lte IE 9]>
     <link rel="stylesheet" href="css/ie/v9.css" /><![endif]-->
 		<!--[if lte IE 8]>
     <link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+			<link rel="stylesheet" href="style.css" />
 	</head>
 	<body>
 
@@ -40,11 +41,7 @@ require_once('global.php');
 				<div class="top">
 
 					<!-- Logo -->
-						<div id="logo">
-							<span class="image avatar48"><img src="images/avatar.jpg" alt="" /></span>
-							<h1 id="title">Jane Doe</h1>
-							<p>Hyperspace Engineer</p>
-						</div>
+
 
 					<!-- Nav -->
 						<nav id="nav">
@@ -62,9 +59,9 @@ require_once('global.php');
 							
 							-->
 							<ul>
-								<li><a href="#top" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-home">Intro</span></a></li>
-								<li><a href="#portfolio" id="portfolio-link" class="skel-layers-ignoreHref"><span class="icon fa-th">Portfolio</span></a></li>
-								<li><a href="#about" id="about-link" class="skel-layers-ignoreHref"><span class="icon fa-user">About Me</span></a></li>
+								<li><a href="#about" id="about-link" class="skel-layers-ignoreHref"><span class="icon fa-user">Über uns</span></a></li>
+								<li><a href="#top" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-home">Aktuelles</span></a></li>
+								<li><a href="#portfolio" id="portfolio-link" class="skel-layers-ignoreHref"><span class="icon fa-th">Gallerie</span></a></li>
 							</ul>
 						</nav>
 						
@@ -74,11 +71,7 @@ require_once('global.php');
 
 					<!-- Social Icons -->
 						<ul class="icons">
-							<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-							<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-							<li><a href="#" class="icon fa-github"><span class="label">Github</span></a></li>
-							<li><a href="#" class="icon fa-dribbble"><span class="label">Dribbble</span></a></li>
-							<li><a href="#" class="icon fa-envelope"><span class="label">Email</span></a></li>
+							<li><a href="ts3server://gw2ts.de?nickname=test" class="big-icon teamspeak"><span class="label">Mit einem Klick zu unserem TS</span></a></li>
 						</ul>
 				
 				</div>
@@ -88,28 +81,10 @@ require_once('global.php');
 		<!-- Main -->
 			<div id="main">
 
-				<!-- Intro -->
-					<section id="top" class="one dark cover">
-						<div class="container">
-
-<?php
-print(getCalender('day'));
-?>
-							
-							<footer>
-								<a href="#portfolio" class="button scrolly">Magna Aliquam</a>
-							</footer>
-
-						</div>
-					</section>
 
         <!-- About Me -->
         <section id="about" class="three">
           <div class="container">
-
-            <header>
-              <h2>About Us</h2>
-            </header>
 
             <a href="http://forum.gw2community.de/BoardList/" class="image featured"><img src="https://forum.gw2community.de/wcf/images/gwc/logo.png" alt="" /></a>
             <?php
@@ -117,18 +92,36 @@ print(getCalender('day'));
             ?>
           </div>
         </section>
-				<!-- Portfolio -->
+        <!-- Intro -->
+        <section id="top" class="one dark cover">
+          <div class="container">
+
+            <header>
+              <h2>Aktuelles</h2>
+            </header>
+
+            <?php
+              print(getCalender('day'));
+              print(getBoardlistPices("//aside/div/fieldset[1]"));
+            ?>
+
+            <footer>
+              <a href="#portfolio" class="button scrolly">Gallerie</a>
+            </footer>
+
+          </div>
+        </section>
+
+
+        <!-- Portfolio -->
 					<section id="portfolio" class="two">
 						<div class="container">
 					
 							<header>
-								<h2>Portfolio</h2>
+								<h2>Gallerie</h2>
 							</header>
 							
-							<p>Vitae natoque dictum etiam semper magnis enim feugiat convallis convallis
-							egestas rhoncus ridiculus in quis risus amet curabitur tempor orci penatibus.
-							Tellus erat mauris ipsum fermentum etiam vivamus eget. Nunc nibh morbi quis 
-							fusce hendrerit lacus ridiculus.</p>
+							<p>Hier findest Du die Flashmob Impressionen userer Community-Mitglieder</p>
 						
 							<div class="row">
 							<?php

@@ -2,20 +2,23 @@
 
 
 function getGallery() {
-  $gal = load('gallery', 'http://forum.gw2community.de/gallery/UnreadImageList/', '//*[@id="content"]/div[3]/div/ul/li');
+  $gal = load('gallery', 'http://forum.gw2community.de/gallery/ImageList/145-Community-Flashmobs-Dienstags-20-45-Uhr/', '//*[@id="content"]/div[3]/div/ul/li');
   $gal = attacheNode($gal);
 
   $i = 1;
   $port = '';
   $port .= '<div class="4u">';
   foreach ($gal->li as $list) {
+    if ($i > 9) {
+      continue;
+    }
     $port .= '<article class="item">';
     $port .= '<a href="' . $list->a['href'] . '" class="image fit"><img src="' . $list->a->img['src'] . '" alt="" /></a>';
     $port .= '<header><h3>' . $list->div->p . '</h3></header>';
     $port .= '</article>';
 
     if ($i == 3 || $i == 6) {
-      $port .= '</div><div class="4u">';
+      $port .= '</div><div class="4u">' ;
     }
     $i++;
   }
@@ -25,7 +28,14 @@ function getGallery() {
 }
 
 function getBoardlistPices($xpathStr) {
-  return load('boardlist', 'http://forum.gw2community.de/BoardList/', $xpathStr);
+  $board =  load('boardlist', 'http://forum.gw2community.de/BoardList/', $xpathStr);
+  $board = attacheNode($board);
+  return $board->fieldset->asXML();
+
+
+
+
+
 }
 
 function cache($filename, $url) {
@@ -76,7 +86,9 @@ function getCalender($mode) {
 
   $nodes = attacheNode($nodes);
 
-  return '<ol>'.$nodes->ol->asXML().'</ol>';
+  $foo = "<fieldset><legend>Heutige Termine</legend>".$nodes->ol->asXML()."</fieldset>";
+
+  return $foo;
 
 }
 
@@ -129,7 +141,7 @@ $html .= '<link rel="stylesheet" type="text/css" href="style.css"/>';
 $html .= '</head>';
 //$html .= attacheNode($day, array('id'=>"day"));
 //$html .= attacheNode($week, array('id'=>"week"));
-//$html .= attacheNode($lastPosts, array('id'=>"lastPost"));
+//$html .= attacheNode($lastPos ts, array('id'=>"lastPost"));
 //$html .= attacheNode($lastActivations, array('id'=>"lastActivs"));
 //$html .= attacheNode($mostRecents, array('id'=>"mostRecents"));
 //$html .= attacheNode($about, array('id'=>"about"));

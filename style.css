@@ -25,11 +25,22 @@ small {
   font-size: .85rem;
 }
 
+
+
+.box48 * {
+  text-align: left;
+  font-size: 0.9em;
+}
 .box48 > :first-child {
   float: left;
+  text-align: left;
 }
 .box24 > :first-child {
-  float: left;
+  display: inline-block;
+}
+
+.sidebarBoxHeadline {
+  display: inline-block;
 }
 
 .badge {
@@ -45,6 +56,7 @@ small {
   vertical-align: middle;
   white-space: nowrap;
   word-wrap: normal;
+  margin: 0em 0.5em;
 }
 
 .calendarWeekView > .containerList > li > .calendarEvents > li {
@@ -109,4 +121,67 @@ li > .calendarDay {
   padding: 4px 0;
   text-align: center;
   width: 90px;
+}
+
+.containerHeadline p{
+  margin: 0px   3.57em;
+}
+
+.container fieldset {
+  width: 22em;
+  text-align: left;
+  display: inline-block;
+  vertical-align: top;
+  margin: 1em;
+}
+
+fieldset h3 {
+  font-size: 0.7em;
+}
+
+
+fieldset li a {
+  vertical-align: top;
+}
+
+.container li {
+  margin: 0.5em 0em;
+  padding: 0.5em;
+  background-color: rgba(0,0,0,0.3);
+}
+
+.box24 img {
+  width: 48px !important;
+  height: 48px !important;
+}
+
+small * {
+  vertical-align: top;
+}
+
+ul.icons .big-icon {
+  width:128px ;
+  height:128px ;
+  background-repeat: no-repeat;
+  line-height: 1em;
+/*#41484c*/
+}
+
+.teamspeak {
+  background-image: url("images/teamspeak.png");
+  position: relative;
+}
+
+.teamspeak:hover {
+  background-image: url("images/teamspeak-light.png");
+  position: relative;
+}
+
+.teamspeak span {
+  font-weight: normal;
+  position: absolute;
+  top:-2em;
+  left: 0;
+  display: inline-block;
+  width: 8em;
 }
