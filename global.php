@@ -32,10 +32,6 @@ function getBoardlistPices($xpathStr) {
   $board = attacheNode($board);
   return $board->fieldset->asXML();
 
-
-
-
-
 }
 
 function cache($filename, $url) {
@@ -126,7 +122,21 @@ function attacheNode(DOMNodeList $node, array $attr = array()) {
   return $xml;
 }
 
+function getOnAirTime($url) {
 
+  $xpath = "//article/div/section/div/div/div[1]/div/div/table";
+
+  $table = load('radio', $url, $xpath);
+
+  $board = attacheNode($table);
+
+  return $board->table->asXML();
+
+
+}
+
+
+$onAirUrl = 'http://forum.gw2community.de/Thread/1720-Guild-Waves-Sendeplan-15-09-2014-21-09-2014/';
 
 $week = getCalender('week');
 $day = getCalender('day');

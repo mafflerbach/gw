@@ -61,6 +61,7 @@ require_once('global.php');
 							<ul>
 								<li><a href="#about" id="about-link" class="skel-layers-ignoreHref"><span class="icon fa-user">Über uns</span></a></li>
 								<li><a href="#top" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-home">Aktuelles</span></a></li>
+								<li><a href="#radio" id="radio-link" class="skel-layers-ignoreHref"><span class="icon fa-music">Guild Waves - GW2 Radio</span></a></li>
 								<li><a href="#portfolio" id="portfolio-link" class="skel-layers-ignoreHref"><span class="icon fa-th">Gallerie</span></a></li>
 							</ul>
 						</nav>
@@ -72,7 +73,15 @@ require_once('global.php');
 					<!-- Social Icons -->
 						<ul class="icons">
 							<li><a href="ts3server://gw2ts.de?nickname=test" class="big-icon teamspeak"><span class="label">Mit einem Klick zu unserem TS</span></a></li>
-						</ul>
+              <li>
+                <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                  <input type="hidden" name="cmd" value="_s-xclick">
+                  <input type="hidden" name="hosted_button_id" value="GS8XV6SL6Q38Q">
+                  <input type="submit" class="submitspenden" border="0" name="submit" value="Unterstütze uns mit einer Spende">
+                  <img alt="" border="0" src="https://www.paypalobjects.com/de_DE/i/scr/pixel.gif" width="1" height="1">
+                </form>
+              </li>
+            </ul>
 				
 				</div>
 			
@@ -80,8 +89,6 @@ require_once('global.php');
 
 		<!-- Main -->
 			<div id="main">
-
-
         <!-- About Me -->
         <section id="about" class="three">
           <div class="container">
@@ -112,17 +119,34 @@ require_once('global.php');
           </div>
         </section>
 
+        <!-- Intro -->
+        <section id="radio" class="four">
+          <div class="container">
+
+            <header>
+             <img src="http://imagehost.gw2community.de/forum/logos/logo_guild_waves.png" alt="Guild Waves Sendeplan"/>
+            </header>
+
+            <?php
+            print(getOnAirTime($onAirUrl));
+
+            ?>
+
+            <a href="http://radio.gw2community.de:8000/listen.pls">Hier spielt die Musik</a>
+
+          </div>
+        </section>
 
         <!-- Portfolio -->
 					<section id="portfolio" class="two">
 						<div class="container">
-					
+
 							<header>
 								<h2>Gallerie</h2>
 							</header>
-							
+
 							<p>Hier findest Du die Flashmob Impressionen userer Community-Mitglieder</p>
-						
+
 							<div class="row">
 							<?php
                 print(getGallery());
@@ -136,12 +160,12 @@ require_once('global.php');
 
 		<!-- Footer -->
 			<div id="footer">
-				
+
 				<!-- Copyright -->
 					<ul class="copyright">
 						<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
 					</ul>
-				
+
 			</div>
 
 	</body>
